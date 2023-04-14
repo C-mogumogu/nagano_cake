@@ -1,1 +1,6 @@
-edit
+<h3>ジャンル編集</h3>
+  <p>ジャンル名</p>
+    <%= form_with model: @genre do |f| %>
+      <%= f.text_field :name, placeholder: "ジャンル名" %>
+      <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+    <% end %>

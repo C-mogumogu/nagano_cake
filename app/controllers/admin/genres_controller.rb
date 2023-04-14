@@ -1,13 +1,13 @@
 class Admin::GenresController < ApplicationController
 
   def index
-    @names = Genre.all
-    @name = Genre.new
+    @genres = Genre.all
+    @genre = Genre.new
   end
 
   def create
-    @name = Genre.new(genre_params)
-    if @name.save
+    @genre = Genre.new(genre_params)
+    if @genre.save
       flash[:notice] = "登録が完了しました"
       redirect_to request.referer
     else
@@ -16,12 +16,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @name = Genre.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
 
   def update
-    @name = Genre.find(params[:id])
-    if @name.update(genre_params)
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
       flash[:notice] = "編集が完了しました"
       redirect_to :index
     end
