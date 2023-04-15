@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  belongs_to :genre
+  has_many :items
 end

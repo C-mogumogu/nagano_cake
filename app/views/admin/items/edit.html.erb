@@ -1,1 +1,28 @@
-<%= render "form", item: @item %>
+<h3 class="bg-light">商品新規登録</h3>
+<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+
+  <%= f.label :商品画像 %>
+  <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+
+  <%= f.label :商品名 %>
+  <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+
+  <%= f.label :商品説明 %>
+  <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
+
+  <%= f.label :ジャンル %>
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
+
+  <%= f.label :税抜価格 %>
+  <%= f.text_field :price, class: "form-control", placeholder: "1000" %>
+
+  <%= f.label :販売ステータス %>
+  <!--%= f.radio_button :sell_status, Item.sell_status.key(1) %-->
+  <!--%= f.label :sell_status, Item.sell_status_i18n[:now_on_sale] %-->
+
+  <!--%= f.radio_button :sell_status, Item.sell_status.key(0) %-->
+  <!--%= f.label :sell_status, Item.sell_status_i18n[:sold_out] %-->
+
+  <%= f.submit "変更を保存", class: "btn btn-success" %>
+
+<% end %>

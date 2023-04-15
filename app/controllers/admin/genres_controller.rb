@@ -23,12 +23,14 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
       flash[:notice] = "編集が完了しました"
-      redirect_to :index
+      redirect_to admin_genres_path
+    else
+      redirect_to request.referer
     end
   end
 
 private
- 
+
  def genre_params
    params.require(:genre).permit(:name)
  end

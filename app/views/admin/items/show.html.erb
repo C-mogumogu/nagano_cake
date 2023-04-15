@@ -1,22 +1,23 @@
-<h3>商品詳細</h3>
+<h3 class="bg-light">商品詳細</h3>
 
-<%= image_tag @item.get_image(300,200) %>
+<%= image_tag @item.get_image, size:'100x100' %>
 
-商品名
-<%= @item.name %>
+<label>商品名</label>
+<span><%= @item.name %></span>
 
-商品説明
-<%= @item.introduction %>
+<label>商品説明</label>
+<span><%= @item.introduction %></span>
 
-ジャンル
-<%= @item.name %>
+<label>ジャンル</label>
+<span><%= @item.genre.name %></span>
 
-税込価格<br>
-(税抜価格)
+<label>
+  税込価格<br>
+  (税抜価格)
+</label>
+<span> <%= @item.with_tax_price %> (<%= @item.price %>)円</span>
 
-<%= @item.price %>
+<label>販売ステータス</label>
+<span><%= @item.sell_status %></span>
 
-販売ステータス
-<%= @item.sell_status %>
-
-<%= linl_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+<%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
