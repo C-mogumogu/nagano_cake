@@ -8,5 +8,12 @@
     <h3><%=@item.name %></h3>
     <p><%=@item.introduction %></p>
     <h4>¥<%=@item.price %>円</h4><p>(税込み)</p> #税抜き表示
+    <div>
+      <%= form_with model: @cart_item do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit 'カートに入れる', class:'btn-success' %>
+      <% end %>
+    </div>
   </div>
 </div>
