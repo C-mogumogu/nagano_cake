@@ -17,14 +17,14 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :items,  only: [:index, :show]
-    resources :customers  , only: [:show, :edit, :update]
-    get 'customers/:id/is_deleted' => 'public/customers#confirm_deleted'
-    patch 'customers/:id/is_deleted' => 'public/customers#is_deleted'
+    resource :customer  , only: [:show, :edit, :update]
+    get 'customers/confirm_deleted' => 'customers#confirm_deleted' #/public削除
+    patch 'customers/is_deleted' => 'customers#is_deleted' #/public削除
     resources :cart_items, only: [:create, :index, :update, :destroy]
-    delete 'cart_items' => 'public/cart_items#destroy_all'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all' #public削除
     resources :orders, only: [:new, :create, :index, :show]
-    get 'orders/confirm' => 'public/orders#confirm'
-    get 'orders/finish' => 'public/orders#finish'
+    post 'orders/confirm' => 'orders#confirm' #/public削除
+    get 'orders/finish' => 'orders#finish' #/public削除
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -32,9 +32,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :orders, only: [:edit, :update]
-    resources :order_items, only: [:edit, :update]
-    root  :to => 'admin/homes#top'
+    resources :orders, only: [:show, :update, :index]
+    resources :order_items, only: [:update]
+    root  :to => 'homes#top' #admin削除
   end
 
 

@@ -1,1 +1,11 @@
-index.html.erb
+<div class="title">
+  <p><span>商品一覧</span>(全<%=@items.count %>件）</p>
+</div>
+
+<% @items.each do |item| %>
+<div>
+  <%= image_tag item.get_image %>
+  <p><%= link_to item.name,item %></p>
+  <p>¥<%= item.price %></p>
+</div>
+<% end %>
