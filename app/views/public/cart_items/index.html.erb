@@ -1,1 +1,27 @@
-index
+
+  <h2>ショッピングカート</h2>
+  <%= link_to "カートを空にする",destroy_all_cart_items_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"Are you sure?" %>
+  <table>
+   <thead>
+     <th>商品名</th>
+     <th>単価（税込み）</th>
+     <th>数量</th>
+     <th>小計</th>
+     <th></th>
+   </thead>
+   <tbody>
+   <% @cart_items.each do |cart_item| %>
+     <tr>
+       <td>
+        <%= image_tag cart_item.item.get_image %>
+        <%= cart_item.item.name %>
+       </td>
+       <td><%= cart_item.item.with_tax_price %></td>
+       <td><%= f.select :amount, *[1..10],{ selected: cart_item.amount } %></td>
+       <td><%= cart_item.subtotal %></td>
+       <td><%= link_to "削除",cart_item, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"この商品を消してもいいですか？" %></td>
+       <% @total_price += cart_item.subtotal %>
+     </tr>
+   <% end %>
+   </tbody>
+  </table>
