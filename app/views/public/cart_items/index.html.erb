@@ -1,6 +1,6 @@
 
   <h2>ショッピングカート</h2>
-  <%= link_to "カートを空にする",destroy_all_cart_items_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"Are you sure?" %>
+  <%= link_to "カートを空にする",cart_items_destroy_all_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"Are you sure?" %>
   <table>
    <thead>
      <th>商品名</th>
