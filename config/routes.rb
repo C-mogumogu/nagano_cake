@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     resources :items,  only: [:index, :show]
     resource :customer  , only: [:show, :edit, :update]
-    get 'customers/confirm_deleted' => 'customers#confirm_deleted' #/public削除
-    patch 'customers/is_deleted' => 'customers#is_deleted' #/public削除
+    get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
+    patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all' #public削除
     resources :orders, only: [:new, :create, :index, :show]
