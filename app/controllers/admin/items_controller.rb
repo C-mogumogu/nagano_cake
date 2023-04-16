@@ -20,11 +20,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    if @item.sell_status == "0"
-      @sell_status = Item.sell_statuses_i18n[:sold_out]
-    else
-      @sell_status = Item.sell_statuses_i18n[:now_on_sale]
-    end
   end
 
   def edit
