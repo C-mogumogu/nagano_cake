@@ -1,28 +1,50 @@
-<h3 class="bg-light">商品新規登録</h3>
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-  <%= f.label :商品画像 %>
-  <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+      <h3 class="bg-light">商品新規登録</h3>
+      <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
-  <%= f.label :商品名 %>
-  <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+        <div class="form-group">
+          <%= f.label :商品画像 %>
+          <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+        </div>
 
-  <%= f.label :商品説明 %>
-  <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
+        <div class="form-group">
+          <%= f.label :商品名 %>
+          <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+        </div>
 
-  <%= f.label :ジャンル %>
-  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
+        <div class="form-group">
+          <%= f.label :商品説明 %>
+          <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
+        </div>
 
-  <%= f.label :税抜価格 %>
-  <%= f.text_field :price, class: "form-control", placeholder: "1000" %>
+        <div class="form-group">
+          <%= f.label :ジャンル %>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
+        </div>
 
-  <%= f.label :販売ステータス %>
-  <!--%= f.radio_button :sell_status, Item.sell_status.key(1) %-->
-  <!--%= f.label :sell_status, Item.sell_status_i18n[:now_on_sale] %-->
+        <div class="form-group">
+          <%= f.label :税抜価格 %>
+          <%= f.text_field :price, class: "form-control", placeholder: "1000" %>
+        </div>
 
-  <!--%= f.radio_button :sell_status, Item.sell_status.key(0) %-->
-  <!--%= f.label :sell_status, Item.sell_status_i18n[:sold_out] %-->
+        <div class="form-group">
+          <%= f.label :販売ステータス %>
+          <%= f.radio_button :sell_status, Item.sell_statuses.key(1) %>
+          <%= f.label :sell_status, Item.sell_statuses_i18n[:now_on_sale] %>
 
-  <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <%= f.radio_button :sell_status, Item.sell_statuses.key(0) %>
+          <%= f.label :sell_status, Item.sell_statuses_i18n[:sold_out] %>
+        </div>
 
-<% end %>
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

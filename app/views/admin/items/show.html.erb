@@ -1,23 +1,36 @@
+<%= flash[:notice] %>
+
 <h3 class="bg-light">商品詳細</h3>
 
 <%= image_tag @item.get_image, size:'100x100' %>
 
-<label>商品名</label>
-<span><%= @item.name %></span>
+<div>
+  <label>商品名</label>
+  <%= @item.name %>
+</div>
 
-<label>商品説明</label>
-<span><%= @item.introduction %></span>
+<div>
+  <label>商品説明</label>
+  <%= @item.introduction %>
+</div>
 
-<label>ジャンル</label>
-<span><%= @item.genre.name %></span>
+<div>
+  <label>ジャンル</label>
+  <%= @item.genre.name %>
+</div>
 
-<label>
-  税込価格<br>
-  (税抜価格)
-</label>
-<span> <%= @item.with_tax_price %> (<%= @item.price %>)円</span>
+<div>
+  <label>
+    税込価格<br>
+    (税抜価格)
+  </label>
+  <%= @item.with_tax_price %> (<%= @item.price %>)円
+</div>
 
-<label>販売ステータス</label>
-<span><%= @item.sell_status %></span>
+<div>
+  <label>販売ステータス</label>
+  <%= @sell_statuses %>
+</div>
+
 
 <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
