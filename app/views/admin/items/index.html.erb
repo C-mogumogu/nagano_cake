@@ -1,35 +1,55 @@
-<h3 class="bg-light">商品一覧</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
 
-<table class="table table-hover table-inverse">
+      <h3 class="bg-light">商品一覧</h3>
 
-  <thead class="head-light">
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
+      <table class="table table-hover table-inverse">
 
-  <tbody>
+        <thead class="thead-light">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-    <% @items.each do |item| %>
-    <tr>
+        <tbody>
 
-      <td><%= item.id %></td>
+          <% @items.each do |item| %>
+          <tr>
 
-      <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%= item.id %></td>
 
-      <td><%= item.price %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
 
-      <td><%= item.genre.name %></td>
+            <td><%= item.price %></td>
 
-      <td><%= item.sell_status_i18n %></td>
+            <td><%= item.genre.name %></td>
 
-    </tr>
-    <% end %>
+            <td class="sell_status"><%= item.sell_status_i18n %></td>
 
-  </tbody>
+          </tr>
+          <% end %>
 
-</table>
+        </tbody>
+
+      </table>
+
+      <%= paginate @items %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+  $('.sell_status').each(function(){
+    const sell_status = $(this).css({
+    'color': '#32cd32'
+    });
+  });
+});
+</script>

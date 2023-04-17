@@ -3,6 +3,12 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :genre_id, presence: true
+  validates :price, presence: true
+  validates :sell_status, presence: true
+
   enum sell_status: { sold_out: 0, now_on_sale: 1 }
 
   def get_image

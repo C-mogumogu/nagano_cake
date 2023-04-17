@@ -1,6 +1,18 @@
-<h3 class="bg-light">ジャンル編集</h3>
-  <p>ジャンル名</p>
-    <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
-      <%= f.text_field :name, placeholder: "ジャンル名" %>
-      <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <h3 class="bg-light">ジャンル編集</h3>
+    
+      <p>ジャンル名</p>
+      
+      <%= render 'layouts/errors', obj: @genre %>
+      
+      <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
+        <%= f.text_field :name, placeholder: "ジャンル名" %>
+        <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

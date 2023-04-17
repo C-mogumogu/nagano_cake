@@ -11,7 +11,8 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "登録が完了しました"
       redirect_to request.referer
     else
-      redirect_to request.referer
+      @genres = Genre.all
+      render :index
     end
   end
 
@@ -25,7 +26,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "編集が完了しました"
       redirect_to admin_genres_path
     else
-      redirect_to request.referer
+      render :edit
     end
   end
 
