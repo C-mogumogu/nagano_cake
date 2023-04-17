@@ -8,10 +8,10 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(params_cart_item)
     @item = Item.find_by(params[:item_id])
     @customer = Customer.find_by(params[:customer_id])
-    if @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-         @cart_item.amount += params[:cart_item][:amount].to_i
-         @cart_item.save
-         redirect_to cart_items_path
+    if cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+        cart_item.amount += params[:cart_item][:amount].to_i
+        cart_item.save
+        redirect_to cart_items_path
     else
          @cart_item.save
          flash[:notice] = "New Item was successfully added to cart."
