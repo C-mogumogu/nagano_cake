@@ -4,11 +4,11 @@
 <br>これまでの購入履歴が閲覧できなくなります。
 <br>退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= form_with model: @customer, local: true do |f| %>
   <div class="btn btn-primary">
-    <%= link_to "退会しない", customer_path, class: 'text-light' %>
+    <%= link_to "退会しない", customer_path, class: 'text-light text-decoration-none' %>
   </div>
-  <div class="btn btn-danger">
-
+  <div>
+  <!--%= form_with model: @customer, url: {controller: 'customers', action: 'is_deleted'} do |f| %-->
+    <%= link_to "退会する", customer_is_deleted_path, method: :patch, class: 'btn btn-danger text-light text-decoration-none' %>
+  <!--% end %-->
   </div>
-<% end %>
