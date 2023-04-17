@@ -1,6 +1,8 @@
 
   <h2>ショッピングカート</h2>
-  <%= link_to "カートを空にする",cart_items_destroy_all_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"Are you sure?" %>
+  <%= link_to "カートを空にする", url:{contllore: cart_item, action: destroy_all}, class:"btn btn-sm btn-danger", "data-confirm"=>"カートを空にしますか？" %>
+
+  <%= form_with model: @cart_item, url: '/cart_item/#{cart_item.id}', method: :put, local:true do |f| %>
   <table>
    <thead>
      <th>商品名</th>
@@ -17,11 +19,14 @@
         <%= cart_item.item.name %>
        </td>
        <td><%= cart_item.item.with_tax_price %></td>
-       <td><%= f.select :amount, *[1..10],{ selected: cart_item.amount } %></td>
+       <td>
+           <%= f.select :amount, *[1..10],{ selected: cart_item.amount } %>
+           <%= f.submit '変更', class: 'btn btn-success' %>
+       </td>
        <td><%= cart_item.subtotal %></td>
        <td><%= link_to "削除",cart_item, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"この商品を消してもいいですか？" %></td>
-       <% @total_price += cart_item.subtotal %>
      </tr>
    <% end %>
    </tbody>
   </table>
+  <% end %>
