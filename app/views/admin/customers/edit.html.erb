@@ -1,6 +1,6 @@
-<h2>会員情報編集</h2>
+<h3><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h3>
 
-<%= form_with model: @customer do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
   <%#<%= render "public/shared/error_messages", resource: resource %>
 
 <table>
@@ -36,12 +36,16 @@
   </tr>
   <tr>
     <td>会員ステータス</td>
+    <td>
+      <%= f.radio_button :is_deleted, "false" %>
+      <%= f.label :is_deleted_false, "有効" %>
+      <%= f.radio_button :is_deleted, "true" %>
+      <%= f.label :is_deleted_false, "無効" %>
+    </td>
+  </tr>
+  <tr>
     <td></td>
-    <td></td>
+    <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
   </tr>
 </table>
-<%= f.submit "編集内容を保存", class: 'btn btn-success' %>
-  <div class="btn btn-danger">
-    <%= link_to "退会する", customer_confirm_deleted_path, class: 'text-light text-decoration-none' %>
-  </div>
 <% end %>
