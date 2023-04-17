@@ -23,10 +23,10 @@ class Public::SessionsController < Devise::SessionsController
   # If you have extra params to permit, append them to the sanitizer.
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
-    return if !@customer
-    if @customer.valid_password?(params[:customer][:password])
-      unless @customer.is_deleted == false
-        render :new
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+        flash[:notice] = "すでに退会しています"
+        redirect_to root_path
       end
     end
   end
