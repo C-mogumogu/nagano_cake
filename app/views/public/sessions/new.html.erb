@@ -1,5 +1,9 @@
 <h2>ログイン</h2>
 
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <h4>会員の方はこちらからログイン</h4>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
