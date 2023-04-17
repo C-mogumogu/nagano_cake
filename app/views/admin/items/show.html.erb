@@ -1,1 +1,64 @@
-show.html.erb
+<%= flash[:notice] %>
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-2">
+      <h3 class="bg-light">商品詳細</h3>
+    </div>
+  </div>
+</div>
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @item.get_image, size:'300x200' %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <table>
+
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item.genre.name %></td>
+        </tr>
+
+        <tr>
+          <th>
+            税込価格<br>
+            (税抜価格)
+          </th>
+          <td><%= @item.with_tax_price %> (<%= @item.price %>)円</td>
+        </tr>
+
+        <tr>
+          <th>販売ステータス</th>
+          <td class="sell_status"><%= @item.sell_status_i18n %></td>
+        </tr>
+
+      </table>
+
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+
+     </div>
+   </div>
+ </div>
+
+<script>
+  $(function(){
+  $('.sell_status').each(function(){
+    const sell_status = $(this).css({
+      'color': '#32cd32'
+    });
+  });
+});
+</script>
