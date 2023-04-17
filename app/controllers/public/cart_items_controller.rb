@@ -2,6 +2,8 @@ class Public::CartItemsController < ApplicationController
 
   def index
    @cart_items = current_customer.cart_items
+   @total_price = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal}
+   #@cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
   end
 
   def create
@@ -21,23 +23,24 @@ class Public::CartItemsController < ApplicationController
 
   def update
      @cart_item = CartItem.find(params[:id])
-    if @cart_item.update(cart_item_params)
+    if @cart_item.update(params_cart_item)
       redirect_to cart_items_path, notice: "商品の数量を変更しました"
     else
       render 'index'
     end
   end
 
-  def destroy
-    @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
-    render 'index'
+  def destroy_all
+    cart_items = current_customer.cart_items.all
+    cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
-  def destroy_all
-    @cart_items = current_customer.cart_items.all
-    @cart_items.destroy_all
-    render 'index'
+  def destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    @cart_items = CartItem.all
+    redirect_to cart_items_path
   end
 
   private
