@@ -4,45 +4,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="card text-dark bg-light">
-        <div class="card-header text-center">ジャンル検索</div>
-        <div class="card-body">
-          <ul class="card-text list-unstyled">
-            <% @genres.each do |genre| %>
-              <li><%= genre.name %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+    <div class="col-md-2">
+      <%= render 'layouts/sidebar', genres: @genres %>
     </div>
-    <div class='col-md-9'>
+    <div class='col-md-10'>
       <div class="card text-white">
         <img class="card-img" src="/assets/top_image.jpg" alt="">
         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-          <p class="card-text bg-secondary p-2">
+          <div class="card-text bg-secondary p-2">
             ようこそ、ながのCAKEへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。
-          </p>
+          </div>
         </div>
       </div>
       <h2>新着商品</h2>
       <div class="card-deck">
         <% @items.each do |item| %>
-          <div class="card" style="width: 16rem;">
-            <%= image_tag item.get_image %>
-            <div class="card-body">
-              <h5 class="card-title"><%= link_to item.name, item %></h5>
-              <p class="card-text">¥<%= item.price %></p>
+          <div class="col-md-3">
+            <div class="card h-100">
+              <%= image_tag item.get_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to item.name, item %></h5>
+                <p class="card-text">¥<%= item.price %></p>
+              </div>
             </div>
           </div>
         <% end %>
       </div>
-    <p class="text-right">
-      <%= link_to "すべての商品を見る", items_path %>
-    </p>
+      <p class="text-right">
+        <%= link_to "すべての商品を見る", items_path %>
+      </p>
     </div>
   </div>
 </div>

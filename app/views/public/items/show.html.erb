@@ -1,19 +1,22 @@
-<div class="row">
-  <div class="col-2">
-  </div>
-  <div class="col-4">
-    <%=image_tag @item.get_image, size: '100*100' %>
-  </div>
-  <div class="col-5">
-    <h3><%=@item.name %></h3>
-    <p><%=@item.introduction %></p>
-    <h4>¥<%=@item.price %>円</h4><p>(税込み)</p> #税抜き表示
-    <div>
-      <%= form_with model: @cart_item do |f| %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.select :amount, *[1..10] %>
-        <%= f.submit 'カートに入れる', class:'btn-success' %>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag @item.get_image, width: "100%" %>
+    </div>
+    <div class="col-md-5">
+      <h3><%=@item.name %></h3>
+      <p><%=@item.introduction %></p>
+      <h4>¥<%=@item.price %>円</h4><p>(税込み)</p> #税抜き表示
+      <div>
+        <%= form_with model: @cart_item do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit 'カートに入れる', class:'btn-success' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
