@@ -17,14 +17,14 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :items,  only: [:index, :show]
-    resource :customer  , only: [:show, :edit, :update]
     get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
     patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除
-    resources :cart_items, only: [:create, :index, :update, :destroy]
+    resource :customer  , only: [:show, :edit, :update]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all' #public削除
-    resources :orders, only: [:new, :create, :index, :show]
-    post 'orders/confirm' => 'orders#confirm' #/public削除
+    resources :cart_items, only: [:create, :index, :update, :destroy]
     get 'orders/finish' => 'orders#finish' #/public削除
+    post 'orders/confirm' => 'orders#confirm' #/public削除
+    resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :order_items, only: [:create]
   end

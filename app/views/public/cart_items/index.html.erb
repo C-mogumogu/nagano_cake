@@ -16,14 +16,14 @@
         <%= image_tag cart_item.item.get_image %>
         <%= cart_item.item.name %>
        </td>
-       <td><%= number_to_currency(cart_item.item.with_tax_price, strip_insignificant_zeros: true) %></td>
+       <td><%= number_to_currency(cart_item.item.with_tax_price, unit: "¥", strip_insignificant_zeros: true) %></td>
        <td>
            <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
            <%= f.select :amount, *[1..10],{ selected: cart_item.amount } %>
            <%= f.submit '変更', class: 'btn btn-success' %>
            <% end %>
        </td>
-       <td><%= number_to_currency(cart_item.subtotal, strip_insignificant_zeros: true) %></td>
+       <td><%= number_to_currency(cart_item.subtotal, unit: "¥", strip_insignificant_zeros: true) %></td>
        <td><%= link_to "削除",cart_items_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"この商品を消してもいいですか？" %></td>
    <% end %>
    </tbody>

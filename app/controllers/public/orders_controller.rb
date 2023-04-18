@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
         order_items.save
       end
         current_customer.cart_items.destroy_all
-        redirect_to " /orders/finish"
+        redirect_to action: :finish
     else
        @order = Order.new(order_params)
        render :new
