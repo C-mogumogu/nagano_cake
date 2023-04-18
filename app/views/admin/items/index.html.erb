@@ -4,6 +4,12 @@
 
       <h3 class="bg-light">商品一覧</h3>
 
+　　　<div class="text-right">
+        <%= link_to new_admin_item_path do %>
+          <i class="fas fa-plus-circle fa-2x" style="color: #000000;"></i>
+        <% end %>
+      </div>
+
       <table class="table table-hover table-inverse">
 
         <thead class="thead-light">
@@ -29,7 +35,13 @@
 
             <td><%= item.genre.name %></td>
 
-            <td class="sell_status"><%= item.sell_status_i18n %></td>
+            <td class="font-weight-bold">
+              <% if item.sell_status_i18n == "販売中" %>
+                <div class="text-success"><%= "販売中" %></div>
+              <% else %>
+                <div class="text-muted"><%= "売り切れ" %></div>
+              <% end %>
+            </td>
 
           </tr>
           <% end %>
@@ -43,13 +55,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(function(){
-  $('.sell_status').each(function(){
-    const sell_status = $(this).css({
-    'color': '#32cd32'
-    });
-  });
-});
-</script>
