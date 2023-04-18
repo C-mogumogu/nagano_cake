@@ -17,17 +17,17 @@
               <%= cart_item.item.name %>
             </td>
             <td>
-                <%= number_to_currency(cart_item.item.with_tax_price, strip_insignificant_zeros: true) %>
+                <%= number_to_currency(cart_item.item.with_tax_price,unit: "¥", strip_insignificant_zeros: true) %>
             </td>
             <td>
                 <%= cart_item.amount %>
             </td>
-            <td><%= number_to_currency(cart_item.subtotal, strip_insignificant_zeros: true) %></td>
+            <td><%= number_to_currency(cart_item.subtotal,unit: "¥", strip_insignificant_zeros: true) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <div><span>支払い方法</span><%= @order.payment_method %></div>
+      <div><span>支払い方法</span><%= Order.payment_methods_i18n[@order.payment_method] %></div>
       <div>
         <span>お届け先</span>
         <%= @order.post_code + @order.address %><br>
@@ -38,16 +38,16 @@
       <table>
         <tr>
           <th>送料</th>
-          <th><%= number_to_currency(@order.postage,trip_insignificant_zeros: true) %></th>
+          <th><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></th>
         </tr>
         <tr>
           <th>合計</th>
-          <th><%= number_to_currency(@total_price, strip_insignificant_zeros: true) %></th>
+          <th><%= number_to_currency(@total_price,unit: "¥", strip_insignificant_zeros: true) %></th>
         </tr>
         <tr>
           <th>請求</th>
           <th>
-            <%= number_to_currency(@order.postage.to_i + @total_price.to_i, strip_insignificant_zeros: true) %>
+            <%= number_to_currency(@order.postage.to_i + @total_price.to_i,unit: "¥", strip_insignificant_zeros: true) %>
           </th>
         </tr>
       </table>
