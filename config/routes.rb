@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm' #/public削除
     get 'orders/finish' => 'orders#finish' #/public削除
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :order_items, only: [:create]
   end
 
   namespace :admin do

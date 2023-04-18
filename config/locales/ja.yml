@@ -1,15 +1,4 @@
 ja:
-  enums:
-    item:
-      sell_status:
-        sold_out: "売り切れ"
-        now_on_sale: "販売中"
-    order:
-      payment_method:
-        credit_card: "クレジットカード"
-        transfer: "銀行振込"
-
-ja:
   activerecord:
     errors:
       messages:
@@ -191,3 +180,14 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+  enums:
+    item:
+      sell_status:
+        sold_out: "売り切れ"
+        now_on_sale: "販売中"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
