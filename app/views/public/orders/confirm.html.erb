@@ -41,7 +41,7 @@
           <th><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></th>
         </tr>
         <tr>
-          <th>合計</th>
+          <th>商品合計</th>
           <th><%= number_to_currency(@total_price,unit: "¥", strip_insignificant_zeros: true) %></th>
         </tr>
         <tr>
@@ -56,10 +56,10 @@
   <div class="row">
     <%= form_with model: @order,local:true do |f| %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <%= f.hidden_field :total_price, :value => @order.postage.to_i + @total_price.to_i %>
+        <%= f.hidden_field :total_price, :value => @total_price.to_i %>
         <%= f.hidden_field :post_code, :value => @order.post_code %>
         <%= f.hidden_field :address, :value => @order.address %>
-        <%= f.hidden_field :address, :value => @order.name%>
+        <%= f.hidden_field :name, :value => @order.name%>
         <%= f.hidden_field :payment_method, :value => @order.payment_method %>
         <%= f.submit '注文を確定する', class:'btn-success',"data-confirm"=>"注文を確定しますか？" %>
     <% end %>
