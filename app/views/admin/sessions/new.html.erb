@@ -10,13 +10,13 @@
             <td><%= f.label :メールアドレス %></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
-  
+
           <tr class="field">
             <td><%= f.label :パスワード %></td>
             <td><%= f.password_field :password, autocomplete: "current-password" %></td>
           </tr>
         </table>
-        
+
         <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
@@ -28,7 +28,7 @@
           <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       <% end %>
-      
+
 
       <%= render "admin/shared/links" %>
 
