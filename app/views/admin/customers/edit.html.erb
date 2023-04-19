@@ -1,7 +1,8 @@
 <h3><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h3>
 
+<%= render "layouts/errors", obj: @customer %>
+
 <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-  <%#<%= render "public/shared/error_messages", resource: resource %>
 
 <table>
   <tr>
