@@ -4,7 +4,7 @@
 
       <h3 class="bg-light">配送先編集</h3>
       
-      <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+      <%= form_with model: @address, url: address_pa@address.id), method: :patch do |f| %>
       
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
       
