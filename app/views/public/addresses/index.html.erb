@@ -16,21 +16,21 @@
           <div class="form-group row">
             <label for="post_code" class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
               <div class="col-sm-3">
-                <%= f.text_field :post_code, class: "form-control", placeholder: "0000000" %>
+                <%= f.text_field :post_code, class: "form-control border-dark", placeholder: "0000000" %>
               </div>
           </div>
 
           <div class="form-group row">
             <label for="address" class="col-sm-3 col-form-label">住所</label>
               <div class="col-sm-6">
-                <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+                <%= f.text_field :address, class: "form-control border-dark", placeholder: "東京都渋谷区代々木神園町0-0" %>
               </div>
           </div>
 
           <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">宛名</label>
               <div class="col-sm-3">
-                <%= f.text_field :name, class: "form-control", placeholder: "令和道子" %>
+                <%= f.text_field :name, class: "form-control border-dark", placeholder: "令和道子" %>
               </div>
           </div>
 
@@ -66,8 +66,10 @@
                     <td class="col-1"><%= address.name %></td>
 
                     <td class="col-2">
-                      <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-success" %>
-                      <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                      <div class="d-grid gap-2 d-md-block text-center">
+                        <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-success" %>
+                        <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                      </div>
                     </td>
 
                   </tr>

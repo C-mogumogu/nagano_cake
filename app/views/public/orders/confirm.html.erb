@@ -1,67 +1,91 @@
-<div class="contaier">
-  <h2>注文情報確認</h2>
+<div class="container">
+
   <div class="row">
-    <div class="col-8">
-      <table>
-        <thead>
-          <th>商品名</th>
-          <th>単価（税込み）</th>
-          <th>数量</th>
-          <th>小計</th>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.get_image %>
-              <%= cart_item.item.name %>
-            </td>
-            <td>
-                <%= number_to_currency(cart_item.item.with_tax_price,unit: "¥", strip_insignificant_zeros: true) %>
-            </td>
-            <td>
-                <%= cart_item.amount %>
-            </td>
-            <td><%= number_to_currency(cart_item.subtotal,unit: "¥", strip_insignificant_zeros: true) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <div><span>支払い方法</span><%= Order.payment_methods_i18n[@order.payment_method] %></div>
-      <div>
-        <span>お届け先</span>
-        <%= @order.post_code + @order.address %><br>
-        <%= @order.name %>
+    <h3 class="col-3 bg-light text-center">注文情報確認</h3>
+  </div>
+
+    <div class="row">
+      <div class="col-8">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <th class="col-4">商品名</th>
+            <th class="col-2">単価（税込み）</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+          </thead>
+
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_image, size: "70x50"  %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                  <%= number_to_currency(cart_item.item.with_tax_price,unit: "¥", strip_insignificant_zeros: true) %>
+              </td>
+              <td>
+                  <%= cart_item.amount %>
+              </td>
+              <td><%= number_to_currency(cart_item.subtotal,unit: "¥", strip_insignificant_zeros: true) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+
+      <div class="col-3">
+        <table class="table table-bordered">
+          <tr>
+            <th class="bg-light">送料</th>
+            <td><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">商品合計</th>
+            <td><%= number_to_currency(@total_price,unit: "¥", strip_insignificant_zeros: true) %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">請求</th>
+            <td>
+              <%= number_to_currency(@order.postage.to_i + @total_price.to_i,unit: "¥", strip_insignificant_zeros: true) %>
+            </td>
+          </tr>
+        </table>
+      </div>
+
     </div>
-    <div class="col-4">
-      <table>
-        <tr>
-          <th>送料</th>
-          <th><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></th>
-        </tr>
-        <tr>
-          <th>商品合計</th>
-          <th><%= number_to_currency(@total_price,unit: "¥", strip_insignificant_zeros: true) %></th>
-        </tr>
-        <tr>
-          <th>請求</th>
-          <th>
-            <%= number_to_currency(@order.postage.to_i + @total_price.to_i,unit: "¥", strip_insignificant_zeros: true) %>
-          </th>
-        </tr>
-      </table>
-    </div>
-  </div>
+
+      <div class="row">
+        <div class="col-5">
+          <table class="table table-borderless">
+            <tr>
+              <th class="col-3">支払い方法</th>
+              <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+            </tr>
+            </br>
+            <tr>
+              <th class="col-3">お届け先</th>
+              <td>
+                〒<%= @order.post_code + @order.address %><br>
+                <%= @order.name %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
   <div class="row">
-    <%= form_with model: @order,local:true do |f| %>
-        <%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <%= f.hidden_field :total_price, :value => @total_price.to_i %>
-        <%= f.hidden_field :post_code, :value => @order.post_code %>
-        <%= f.hidden_field :address, :value => @order.address %>
-        <%= f.hidden_field :name, :value => @order.name%>
-        <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-        <%= f.submit '注文を確定する', class:'btn-success',"data-confirm"=>"注文を確定しますか？" %>
-    <% end %>
+    <div class=" col-9 form-group text-center">
+      <%= form_with model: @order,local:true do |f| %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.hidden_field :total_price, :value => @total_price.to_i %>
+          <%= f.hidden_field :post_code, :value => @order.post_code %>
+          <%= f.hidden_field :address, :value => @order.address %>
+          <%= f.hidden_field :name, :value => @order.name%>
+          <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+          <%= f.submit '注文を確定する', class:'btn btn-success',"data-confirm"=>"注文を確定しますか？" %>
+      <% end %>
+    </div>
   </div>
+
 </div>
