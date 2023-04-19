@@ -1,13 +1,28 @@
-<div class="title">
-  <p><span>商品一覧</span>(全<%=@items.count %>件）</p>
-</div>
+<div class="container">
+  <div class="row">
 
-<div class="d-flex flex-wrap">
-<% @items.each do |item| %>
-  <div class="d-inline-block col-3">
-    <%= image_tag item.get_image %>
-    <p><%= link_to item.name,item %></p>
-    <p>¥<%= item.with_tax_price %></p>
+    <div class="col-md-2">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+
+    <div class='col-md-10'>
+      <div class="title">
+        <p><span>商品一覧</span>(全<%= @item.count %>件）</p>
+      </div>
+      <div class="card-deck">
+        <% @items.each do |item| %>
+          <div class="col-md-3">
+            <div class="card h-100 m-0">
+              <%= image_tag item.get_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to item.name, item %></h5>
+                <p class="card-text">¥<%= item.with_tax_price %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
   </div>
-<% end %>
 </div>
