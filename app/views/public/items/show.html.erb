@@ -11,8 +11,9 @@
       <p><%=@item.introduction %></p>
       <big><b>¥<%= @item.with_tax_price %>円</b></big><small> (税込)</small>
       <div class="form-group">
-        <%= form_with model: @cart_item do |f| %>
+        <%= form_with model: @cart_item, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :customer_id, :value => @customer.id %>
           <%= f.select :amount, *[1..10] %>
           <%= f.submit 'カートに入れる', class:'btn btn-success' %>
         <% end %>
