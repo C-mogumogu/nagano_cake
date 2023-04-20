@@ -1,58 +1,46 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
-    <div class="col-2">
-      <h3 class="bg-light">商品詳細</h3>
-    </div>
+    <h3 class="col-lg-auto bg-light text-center">商品詳細</h3>
   </div>
-</div>
 
-<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 text-sm-center">
       <%= image_tag @item.get_image, size:'300x200' %>
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <table>
 
-        <tr>
-          <th>商品名</th>
-          <td><%= @item.name %></td>
-        </tr>
+      <div class="row">
+        <label class="col-sm-4 col-form-label">商品名</label>
+        <div class="col-sm-8"><%= @item.name %></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-4 col-form-label">商品説明</label>
+        <div class="col-sm-8"><%= @item.introduction %></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-4 col-form-label">ジャンル</label>
+        <div class="col-sm-8"><%= @item.genre.name %></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-4 col-form-label">税込価格<br>(税抜価格)</label>
+        <div class="col-sm-8"><%= @item.with_tax_price %>（<%= @item.price %>）円</div>
+      </div>
+      <div class="row">
+        <label class="col-sm-4 col-form-label">販売ステータス</label>
+        <div class="col-sm-8 font-weight-bold">
+          <% if @item.sell_status_i18n == "販売中" %>
+            <div class="text-success"><%= "販売中" %></div>
+          <% else %>
+            <div class="text-muted"><%= "売り切れ" %></div>
+          <% end %>
+        </div>
+      </div>
 
-        <tr>
-          <th>商品説明</th>
-          <td><%= @item.introduction %></td>
-        </tr>
+      <div class="form-group row justify-content-center">
+        <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+      </div>
 
-        <tr>
-          <th>ジャンル</th>
-          <td><%= @item.genre.name %></td>
-        </tr>
-
-        <tr>
-          <th>
-            税込価格<br>
-            (税抜価格)
-          </th>
-          <td><%= @item.with_tax_price %> (<%= @item.price %>)円</td>
-        </tr>
-
-        <tr>
-          <th>販売ステータス</th>
-          <td class="font-weight-bold">
-              <% if @item.sell_status_i18n == "販売中" %>
-                <div class="text-success"><%= "販売中" %></div>
-              <% else %>
-                <div class="text-muted"><%= "売り切れ" %></div>
-              <% end %>
-            </td>
-        </tr>
-
-      </table>
-
-      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
-
-     </div>
-   </div>
- </div>
+    </div>
+  </div>
+</div>
