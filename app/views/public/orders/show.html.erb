@@ -36,15 +36,15 @@
       <table class="col-12 table table-bordered border-dark">
          <tr>
           <th class="col-6 bg-light">商品合計</th>
-          <td><%= number_to_currency(@order.total_price,unit: "¥", strip_insignificant_zeros: true) %></td>
+          <td>¥<%= @order.total_price.to_s(:delimited, delimiter: ',') %></td>
         </tr>
         <tr>
           <th class="col-6 bg-light">送料</th>
-          <td><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></td>
+          <td>¥<%= @order.postage.to_s(:delimited, delimiter: ',') %></td>
         </tr>
         <tr>
           <th class="col-6 bg-light">ご請求額</th>
-          <td><%= number_to_currency(@order.postage.to_i + @order.total_price.to_i,unit: "¥", strip_insignificant_zeros: true) %></td>
+          <td>¥<%= (@order.postage.to_i + @order.total_price.to_i).to_s(:delimited, delimiter: ',') %></td>
         </tr>
       </table>
     </div>
@@ -64,9 +64,9 @@
           <% @order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name %></td>
-            <td><%= order_item.price %></td>
+            <td>¥<%= order_item.price.to_s(:delimited, delimiter: ',') %></td>
             <td><%= order_item.amount %></td>
-            <td><%= order_item.subtotal %></td>
+            <td>¥<%= order_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
           </tr>
           <% end %>
         </tbody>

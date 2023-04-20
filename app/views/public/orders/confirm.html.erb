@@ -22,12 +22,12 @@
                 <%= cart_item.item.name %>
               </td>
               <td>
-                  <%= number_to_currency(cart_item.item.with_tax_price,unit: "¥", strip_insignificant_zeros: true) %>
+                  ¥<%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %>
               </td>
               <td>
                   <%= cart_item.amount %>
               </td>
-              <td><%= number_to_currency(cart_item.subtotal,unit: "¥", strip_insignificant_zeros: true) %></td>
+              <td>¥<%= cart_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
             </tr>
             <% end %>
           </tbody>
@@ -38,16 +38,16 @@
         <table class="table table-bordered">
           <tr>
             <th class="bg-light">送料</th>
-            <td><%= number_to_currency(@order.postage,unit: "¥", strip_insignificant_zeros: true) %></td>
+            <td>¥<%= @order.postage %></td>
           </tr>
           <tr>
             <th class="bg-light">商品合計</th>
-            <td><%= number_to_currency(@total_price,unit: "¥", strip_insignificant_zeros: true) %></td>
+            <td>¥<%= @total_price.to_s(:delimited, delimiter: ',') %></td>
           </tr>
           <tr>
             <th class="bg-light">請求</th>
             <td>
-              <%= number_to_currency(@order.postage.to_i + @total_price.to_i,unit: "¥", strip_insignificant_zeros: true) %>
+              ¥<%= (@order.postage.to_i + @total_price.to_i).to_s(:delimited, delimiter: ',') %>
             </td>
           </tr>
         </table>

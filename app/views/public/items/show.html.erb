@@ -9,7 +9,7 @@
     <div class="col-md-5">
       <h3><b><%= @item.name %></b></h3>
       <p><%=@item.introduction %></p>
-      <big><b>¥<%= @item.with_tax_price %></b></big><small> (税込)</small>
+      <big><b>¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %></b></big><small> (税込)</small>
       <div class="form-group">
         <%= form_with model: @cart_item, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
