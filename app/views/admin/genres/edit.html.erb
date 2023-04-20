@@ -4,12 +4,17 @@
   </div>
 
   <%= render 'layouts/errors', obj: @genre %>
+
   <div class="row">
-    <p>ジャンル名</p>
-    <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
-      <%= f.text_field :name, placeholder: "ジャンル名" %>
-      <%= f.submit '変更を保存', class: "btn btn-success" %>
-    <% end %>
+    <div class="col-lg-5">
+      <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
+        <div class="form-group row justify-content-center">
+          <label for="jenre" class="col-lg-3 col-form-label">ジャンル名</label>
+          <div class="col-lg-auto"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
+          <%= f.submit '変更を保存', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
