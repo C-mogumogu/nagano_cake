@@ -24,7 +24,7 @@
            <% end %>
        </td>
        <td><%= number_to_currency(cart_item.subtotal, unit: "¥", strip_insignificant_zeros: true) %></td>
-       <td><%= link_to "削除",cart_items_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"この商品を消してもいいですか？" %></td>
+       <td><%= link_to "削除",cart_item_path(cart_item), method: :delete, class:"btn btn-sm btn-danger", "data-confirm"=>"この商品を消してもいいですか？" %></td>
    <% end %>
    </tbody>
   </table>
