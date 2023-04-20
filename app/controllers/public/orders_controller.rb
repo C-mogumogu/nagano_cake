@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
     end
     @order_item = OrderItem.new
     @cart_items = current_customer.cart_items
-    @total_price = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal}
+    @total_price = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
   end
 
   def finish

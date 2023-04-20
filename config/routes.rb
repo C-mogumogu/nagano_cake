@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get 'items/index/:genre_id', to: 'items#genre_search', as: 'genre_search'
     resources :items,  only: [:index, :show]
     get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
     patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除

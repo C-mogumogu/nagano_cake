@@ -3,7 +3,7 @@
   <div class="card-body">
     <ul class="card-text list-unstyled">
       <% genres.each do |genre| %>
-        <li><%= genre.name %></li>
+        <li><%= link_to genre.name, genre_search_path(genre.id) %></li>
       <% end %>
     </ul>
   </div>
