@@ -12,4 +12,17 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.order(:name)
     @customer = current_customer
   end
+
+  def search
+    @genres = Genre.order(:name)
+    @keyword = search_params[:search]
+    @items_all = Item.search(@keyword)
+    @items = Kaminari.paginate_array(@items_all).page(params[:page]).per(10)
+  end
+
+  private
+  def search_params
+    params.permit(:search)
+  end
+
 end
