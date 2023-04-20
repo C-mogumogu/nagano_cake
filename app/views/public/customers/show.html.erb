@@ -1,13 +1,13 @@
-<h2>マイページ</h2>
+<div class="container">
 
-<div>
-  <%= flash[:notice] %>
-</div>
+  <div class="row">
+    <h3 class="col-lg-3 col-md-4 col-sm-4 bg-light text-center">マイページ</h3>
+  </div>
 
 <table>
   <tr>
     <td>
-      <h3>登録情報　</h3>
+      <h3>登録情報</h3>
     </td>
     <td>
       <div class="btn btn-success">
@@ -17,32 +17,36 @@
   </tr>
 </table>
 
+<div class="row">
+  <div class="col-8">
 <table class="table table-bordered">
   <tr>
-    <td>氏名</td>
+    <td class="col-4 bg-light">氏名</td>
     <td><%= @customer.family_name %>　<%= @customer.first_name %></td>
   </tr>
   <tr>
-    <td>カナ</td>
+    <td class="col-4 bg-light">カナ</td>
     <td><%= @customer.family_name_kana %>　<%= @customer.first_name_kana %></td>
   </tr>
   <tr>
-    <td>郵便番号</td>
+    <td class="col-4 bg-light">郵便番号</td>
     <td><%= @customer.post_code %></td>
   </tr>
   <tr>
-    <td>住所</td>
+    <td class="col-4 bg-light">住所</td>
     <td><%= @customer.address %></td>
   </tr>
   <tr>
-    <td>電話番号</td>
+    <td class="col-4 bg-light">電話番号</td>
     <td><%= @customer.phone_number %></td>
   </tr>
   <tr>
-    <td>メールアドレス</td>
+    <td class="col-4 bg-light">メールアドレス</td>
     <td><%= @customer.email %></td>
   </tr>
 </table>
+  </div>
+</div>
 
 <table>
   <tr>
