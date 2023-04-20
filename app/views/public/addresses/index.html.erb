@@ -34,7 +34,7 @@
               </div>
           </div>
 
-        <div class="row">
+        <div class="form-group row">
           <div class=" col-9 form-group text-right">
             <%= f.submit '新規登録', class: "btn btn-success" %>
           </div>
@@ -44,7 +44,7 @@
 
         <div class="container">
           <div class="row">
-            <table class="col-8 table table-bordered border-dark">
+            <table class="col-lg-9 col-md-10 col-sm-12 table table-bordered border-dark">
 
               <thead class="thead-light">
                 <tr>
@@ -61,11 +61,11 @@
 
                     <td class="col-1"><%= address.post_code %></td>
 
-                    <td class="col-3"><%= address.address %></td>
+                    <td class="col-lg-3 col-md-4 col-sm-5"><%= address.address %></td>
 
                     <td class="col-1"><%= address.name %></td>
 
-                    <td class="col-2">
+                    <td class="col-lg-2 col-md-3 col-sm-4">
                       <div class="d-grid gap-2 d-md-block text-center">
                         <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-success" %>
                         <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-danger" %>

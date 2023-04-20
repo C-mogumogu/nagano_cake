@@ -181,7 +181,6 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-ja:
   enums:
     item:
       sell_status:
