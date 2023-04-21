@@ -8,9 +8,8 @@
   <div class="row justify-content-lg-center">
     <div class="col-lg-8">
 
-      <form>
-      <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-
+        <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+        <form>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">商品画像</label>
           <div class="col-sm-8">
@@ -60,9 +59,8 @@
         <div class="form-group row justify-content-center">
           <%= f.submit "変更を保存", class: "btn btn-success" %>
         </div>
-
-      <% end %>
       </form>
+      <% end %>
 
     </div>
   </div>

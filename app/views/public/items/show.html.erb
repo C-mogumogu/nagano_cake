@@ -10,14 +10,16 @@
       <h3><b><%= @item.name %></b></h3>
       <p><%=@item.introduction %></p>
       <big><b>¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %></b></big><small> (税込)</small>
-      <div class="form-group">
-        <%= form_with model: @cart_item, local: true do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.hidden_field :customer_id, :value => @customer.id %>
-          <%= f.select :amount, *[1..10] %>
-          <%= f.submit 'カートに入れる', class:'btn btn-success' %>
-        <% end %>
-      </div>
+      <% if customer_signed_in? %>
+        <div class="form-group">
+          <%= form_with model: @cart_item, local: true do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :customer_id, :value => @customer.id %>
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit 'カートに入れる', class:'btn btn-success' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
