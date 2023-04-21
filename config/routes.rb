@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
+    get 'orders/:id/customer_orders' => 'orders#customer_orders' #顧客ごとの注文一覧
     resources :orders, only: [:show, :update, :index]
     resources :order_items, only: [:update]
     root  :to => 'homes#top' #admin削除

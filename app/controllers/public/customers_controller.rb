@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
       render :show
     end
   end
-
+  
   private
 
   def customer_params
