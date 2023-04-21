@@ -1,5 +1,33 @@
 ja:
   activerecord:
+    attributes:
+      item:
+        name: "商品名"
+        introduction: "注文説明"
+        price: "税抜き価格"
+        sell_status: "販売ステータス"
+        genre: "ジャンル"
+        genre_id: "ジャンル"
+      genre:
+        name: "ジャンル名"
+      customer:
+        family_name: "名字"
+        first_name: "名前"
+        family_name_kana: "名字のふりがな"
+        first_name_kana: "名前のふりがな"
+        phone_number: "電話番号"
+        post_code: "郵便番号"
+        address: "住所"
+        email: "メールアドレス"
+        password: "パスワード"
+      address:
+        name: "送り先の氏名"
+        post_code: "郵便番号"
+        address: "住所"
+      order:
+        post_code: "送り先の郵便番号"
+        address: "送り先の住所"
+        name: "送り先の氏名"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
