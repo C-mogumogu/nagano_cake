@@ -19,6 +19,13 @@
             <%= f.submit 'カートに入れる', class:'btn btn-success' %>
           <% end %>
         </div>
+      <% else %>
+          <div class="form-group">
+          <%= form_with url: new_customer_session_path, local: true do |f| %>
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit 'カートに入れる', class:'btn btn-success' %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
