@@ -3,6 +3,7 @@
     <h3 class="col-lg-3 bg-light text-center">管理者ログイン</h3>
   </div>
   <div class="row justify-content-lg-center">
+    <%= render "admin/shared/error_messages", resource: resource %>
     <div class="col-lg-8">
       <!--%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %-->
       <%= form_with model: @admin, url: admin_session_path do |f| %>
