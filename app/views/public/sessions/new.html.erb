@@ -1,3 +1,5 @@
+<%= flash[:alert]%>
+<%= render "public/shared/error_messages", resource: resource %>
 <div class="container">
   <div class="row">
     <%= render "public/shared/error_messages", resource: resource %>
@@ -8,7 +10,9 @@
   </div>
   <div class="row justify-content-lg-center">
     <div class="col-lg-8">
-      <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
+
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
+
         <div class="form-group row justify-content-center">
           <label for="email" class="col-lg-4 col-form-label">メールアドレス</label>
           <div class="col-lg-auto"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></div>
