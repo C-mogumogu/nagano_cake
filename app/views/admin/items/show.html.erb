@@ -24,7 +24,7 @@
       </div>
       <div class="row">
         <label class="col-sm-4 col-form-label">税込価格<br>(税抜価格)</label>
-        <div class="col-sm-8"><%= @item.with_tax_price %>（<%= @item.price %>）円</div>
+        <div class="col-sm-8"><%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %>（<%= @item.price.to_s(:delimited, delimiter: ',') %>）円</div>
       </div>
       <div class="row">
         <label class="col-sm-4 col-form-label">販売ステータス</label>

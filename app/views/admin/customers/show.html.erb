@@ -43,13 +43,13 @@
       </td>
     </tr>
     <tr>
-      <td>　</td>
+      <td></td>
       <td>
         <div class="btn btn-success">
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'text-light text-decoration-none' %>
         </div>
         <div class="btn btn-primary">
-          <%= link_to "注文履歴一覧を見る", admin_root_path, class: 'text-light text-decoration-none' %>
+          <%= link_to "注文履歴一覧を見る", admin_path(@customer.id), class: 'text-light text-decoration-none' %>
         </div>
       </td>
     </tr>

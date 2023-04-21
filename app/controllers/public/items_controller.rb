@@ -20,4 +20,16 @@ class Public::ItemsController < ApplicationController
     @genre_name = Genre.find(params[:genre_id])
   end
 
+  def search
+    @genres = Genre.order(:name)
+    @keyword = search_params[:search]
+    @items_all = Item.search(@keyword)
+    @items = Kaminari.paginate_array(@items_all).page(params[:page]).per(8)
+  end
+
+  private
+  def search_params
+    params.permit(:search)
+  end
+
 end

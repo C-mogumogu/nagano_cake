@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     get 'items/index/:genre_id', to: 'items#genre_search', as: 'genre_search'
-    resources :items,  only: [:index, :show]
+    resources :items,  only: [:index, :show]do
+      collection do
+        get '/search', to: 'items#search'
+      end
+    end
     get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
     patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除
     resource :customer  , only: [:show, :edit, :update]
@@ -34,6 +38,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
+    get 'orders/:id/customer_orders' => 'orders#customer_orders' #顧客ごとの注文一覧
     resources :orders, only: [:show, :update, :index]
     resources :order_items, only: [:update]
     root  :to => 'homes#top' #admin削除

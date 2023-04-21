@@ -25,6 +25,11 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def customer_orders
+    @customer = Customer.find(params[:id])
+    @orders = Order.where(customer_id: @customer.id).page(params[:page])
+  end
+
   private
   def order_params
     params.require(:order).permit(:status)
