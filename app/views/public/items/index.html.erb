@@ -12,17 +12,19 @@
       <div class="card-deck">
         <% @items.each do |item| %>
           <div class="col-md-3">
-            <div class="card h-100 m-0">
-              <%= image_tag item.get_image %>
+            <a href="/items/<%= item.id %>" class="card h-100 m-0">
+                <%= image_tag item.get_image %>
               <div class="card-body">
-                <h5 class="card-title"><%= link_to item.name, item %></h5>
+                <h5 class="card-title"><%= item.name %></h5>
                 <p class="card-text">¥<%= item.with_tax_price.to_s(:delimited, delimiter: ',') %></p>
               </div>
-            </div>
+            </a>
           </div>
         <% end %>
       </div>
-      <%= paginate @items %>
+      <div class='row justify-content-lg-center'>
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>

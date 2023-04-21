@@ -212,7 +212,7 @@ ja:
   enums:
     item:
       sell_status:
-        sold_out: "売り切れ"
+        sold_out: "販売停止中"
         now_on_sale: "販売中"
     order:
       payment_method:
