@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :items,  only: [:index, :show]
+    resources :items,  only: [:index, :show]do
+      collection do
+        get '/search', to: 'items#search'
+      end
+    end
     get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
     patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除
     resource :customer  , only: [:show, :edit, :update]
