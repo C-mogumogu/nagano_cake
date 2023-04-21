@@ -7,7 +7,7 @@
   </div>
   <div class="row justify-content-lg-center">
     <div class="col-lg-8">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
         <div class="form-group row justify-content-center">
           <label for="email" class="col-lg-4 col-form-label">メールアドレス</label>
           <div class="col-lg-auto"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></div>

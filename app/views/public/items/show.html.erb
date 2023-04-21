@@ -3,10 +3,10 @@
     <div class="col-lg-2 col-md-3 col-sm-5">
       <%= render 'layouts/sidebar', genres: @genres %>
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <%= image_tag @item.get_image, width: "100%" %>
     </div>
-    <div class="col-md-5">
+    <div class="col-lg-5">
       <h3><b><%= @item.name %></b></h3>
       <p><%=@item.introduction %></p>
       <big><b>¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %></b></big><small> (税込)</small>
