@@ -19,7 +19,7 @@
       </div>
     <h4 class="font-weight-bold">お届け先</h4>
       <div class="form-group">
-        <%= f.radio_button :select_address, "0" %>
+        <%= f.radio_button :select_address, "0", {:checked => true} %>
         <%= f.label :"ご自身の住所"%><br>
         <%= '〒' + current_customer.post_code + ' ' + current_customer.address %><br>
         <%= current_customer.family_name + current_customer.first_name %>
