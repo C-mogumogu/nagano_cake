@@ -9,7 +9,7 @@
 
       <%= render "layouts/errors", obj: @customer %>
 
-      <%= form_with model: @customer do |f| %>
+      <%= form_wi/div model: @customer do |f| %>
 
       <div class="form-group row">
         <label for="full_name" class="col-sm-2 col-form-label">氏名</label>
@@ -63,7 +63,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
           <div class="d-grid gap-2 d-md-block text-center">
             <%= f.submit "編集内容を保存", class: 'btn btn-success col-3' %>
-            <%= link_to "退会する", customer_confirm_deleted_path, class: 'btn btn-danger col-2 offset-1' %>
+            <%= link_to "退会する", customer_confirm_deleted_pa/div, class: 'btn btn-danger col-2 offset-1' %>
           </div>
         </div>
       </div>
