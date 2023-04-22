@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :index, :update, :destroy]
     get 'orders/finish' => 'orders#finish' #/public削除
     post 'orders/confirm' => 'orders#confirm' #/public削除
+    get 'orders/confirm' => redirect('orders/new') #再読み込み時のエラー回避のためのルーティング
     resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :order_items, only: [:create]
