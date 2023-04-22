@@ -1,2 +1,66 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+.pagination {
+  justify-content: center;
+}
+
+header{
+  background-color:#e597b2;
+  font-family:'Sacramento',"Caveat","Hiragino Maru Gothic ProN W4","メイリオ",sanselif;
+}
+
+footer{
+  font-family:'Sacramento',"Caveat","Hiragino Maru Gothic ProN W4","メイリオ",sanselif;
+}
+
+h1{
+  font-family:'Sacramento',"Caveat","Hiragino Maru Gothic ProN W4","メイリオ",sanselif;
+}
+
+body{
+  background-color:#ffedef;
+  font-family:"Hiragino Maru Gothic ProN W4","メイリオ",sanselif;
+  color:#4d3233;
+}
+
+a{
+  color:#4d3233;
+}
+
+a:hover{
+  color:#1a1111;
+}
+
+.card-header{
+  color:#4d3233;
+}
+
+.intro-box{
+  background-color: rgba(77,50,51,0.7);
+}
+
+.btn-success{
+  background-color:#13795b;
+}
+
+.btn-success:hover{
+  background-color:#1aa179;
+}
+
+.welcom-admin{
+  color:#ffedef;
+}
+
+.welcom-admin:hover{
+  color:#ffedef;
+}
+
+td{
+  background-color:white;
+}
+
+th{
+  background-color:white;
+}
