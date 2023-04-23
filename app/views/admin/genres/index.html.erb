@@ -1,1 +1,45 @@
-index.html.erb
+<div class="container">
+  <div class="row">
+    <h3 class="col-lg-auto bg-light text-center">ジャンル一覧・追加</h3>
+  </div>
+  
+  <%= render 'layouts/errors', obj: @genre %>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+        <div class="form-group row justify-content-center">
+          <label for="jenre" class="col-lg-3 col-form-label">ジャンル名</label>
+          <div class="col-lg-auto"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
+          <%= f.submit '新規登録', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+
+      <table class="table table-hover tabke-inverse">
+
+        <thead class="thead-light">
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+</div>

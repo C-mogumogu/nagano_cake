@@ -16,25 +16,33 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :items,  only: [:index, :show]
-    resources :customers  , only: [:show, :edit, :update]
-    get 'customers/:id/is_deleted' => 'public/customers#confirm_deleted'
-    patch 'customers/:id/is_deleted' => 'public/customers#is_deleted'
+    get 'items/index/:genre_id', to: 'items#genre_search', as: 'genre_search'
+    resources :items,  only: [:index, :show]do
+      collection do
+        get '/search', to: 'items#search'
+      end
+    end
+    get 'customer/confirm_deleted' => 'customers#confirm_deleted' #/public削除
+    patch 'customer/is_deleted' => 'customers#is_deleted' #/public削除
+    resource :customer  , only: [:show, :edit, :update]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all' #public削除
     resources :cart_items, only: [:create, :index, :update, :destroy]
-    delete 'cart_items' => 'public/cart_items#destroy_all'
+    get 'orders/finish' => 'orders#finish' #/public削除
+    post 'orders/confirm' => 'orders#confirm' #/public削除
+    get 'orders/confirm' => redirect('orders/new') #再読み込み時のエラー回避のためのルーティング
     resources :orders, only: [:new, :create, :index, :show]
-    get 'orders/confirm' => 'public/orders#confirm'
-    get 'orders/finish' => 'public/orders#finish'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :order_items, only: [:create]
   end
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :orders, only: [:edit, :update]
-    resources :order_items, only: [:edit, :update]
-    root  :to => 'admin/homes#top'
+    get 'orders/:id/customer_orders' => 'orders#customer_orders' #顧客ごとの注文一覧
+    resources :orders, only: [:show, :update] #index削除
+    resources :order_items, only: [:update]
+    root to: 'homes#top' #admin削除
   end
 
 

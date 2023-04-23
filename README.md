@@ -1,3 +1,4 @@
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -5,20 +6,22 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* アプリケーション名・概要・アプリケーションURL
 
-* System dependencies
+* 動作が分かるような動画やGIF動画
 
-* Configuration
+* アプリケーションの詳細な説明
 
-* Database creation
+* 使っている言語・フレームワークのバージョン
 
-* Database initialization
+* 環境構築に必要な手順
 
-* How to run the test suite
+* インフラ・フロント・バックそれぞれの技術選定
 
-* Services (job queues, cache servers, search engines, etc.)
+* 実装した機能
 
-* Deployment instructions
+* 設計書
 
-* ...
+* 使用方法
+
+* 作成者アカウント

@@ -1,1 +1,30 @@
-index.html.erb
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-2 col-md-3 col-sm-4">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+
+    <div class='col-lg-10 col-md-9 col-sm-6'>
+      <div class="title">
+        <p><span>商品一覧</span>(全<%= @item.count %>件）</p>
+      </div>
+      <div class="card-deck">
+        <% @items.each do |item| %>
+          <div class="col-md-3 mb-3">
+            <a href="/items/<%= item.id %>" class="card h-100 m-0">
+                <%= image_tag item.get_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <p class="card-text">¥<%= item.with_tax_price.to_s(:delimited, delimiter: ',') %></p>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+      <div class='row justify-content-lg-center'>
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
