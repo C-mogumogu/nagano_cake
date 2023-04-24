@@ -1,11 +1,3 @@
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * アプリケーション名・概要・アプリケーションURL
 
 * 動作が分かるような動画やGIF動画
