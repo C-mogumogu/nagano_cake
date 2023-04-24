@@ -56,7 +56,7 @@ $ bundle install
 
 # 作成者アカウント
 * 個人GitHubへのリンクを記載しておきます。
-何か問題やアドバイスがございましたら謹んでお受けしたいのでぜひお問い合わせください。
- - []()
- - []()
- - []()
+ - 何か問題やアドバイスがございましたら謹んでお受けしたいのでぜひお問い合わせください。
+  - [きり](https://github.com/Kiriko-I)
+  - [なな](https://github.com/purana02)
+  - [もち](https://github.com/purupuruputtyan)
